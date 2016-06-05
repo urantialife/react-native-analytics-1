@@ -1,0 +1,6 @@
+ios/*.xcworkspace
+ios/*.xcodeproj
+ios/Podfile*
+# Not ignored despite ignored by git for some reason
+ios/Pods
+
