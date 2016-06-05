@@ -1,20 +1,20 @@
-# RNSegmentIOAnalytics
+# React Native Analytics
 
-Written by Tal Kain <tal@kain.net>
+Written by Tal Kain <tal@kain.net>, Tony Xiao <tonyx.ca@gmail.com> and other contributors.
 
-Based on SegmentIO (https://segment.com) Analytics project.
+Based on Segment (https://segment.com) Analytics project.
 See [iOS SDK](https://github.com/segmentio/analytics-ios) and [Android SDK](https://github.com/segmentio/analytics-android).
 
 
 ## iOS Installation
-1. Download and install the npm package by running `npm install --save react-native-segment-io-analytics`
+1. Download and install the npm package by running `npm install --save react-native-analytics`
 2. In your Podfile, add `pod "Analytics"` to your project.
 3. Inside Xcode (make sure you've opened your `.xcworkspace` file), go to the project navigator and right click `Libraries` -> `Add Files to [your project's name]`.
-4. Go to `node_modules` -> `react-native-segment-io-analytics` -> and choose the `RNSegmentIOAnalytics.xcodeproj` file.
-5. Make sure your project links to *libAnalytics.a* and *libRNSegmentIOAnalytics.a* (The libraries should be listed under "Build Phases -> Link Binary With Libraries").
+4. Go to `node_modules/react-native-analytics/ios` -> and choose the `RNAnalytics` folder.
+5. Make sure your project links to *libAnalytics.a* (The libraries should be listed under "Build Phases -> Link Binary With Libraries". Should happen automatically if you use cocoapods).
 
 ## Android Installation
-1. Download and install the npm package by running `npm install --save react-native-segment-io-analytics`
+1. Download and install the npm package by running `npm install --save react-native-analytics`
 2. If using [rnpm](https://github.com/rnpm/rnpm), run `rnpm link`. Otherwise add to `android/app/src/main/java/com/your-app-name/MainActivity.java`:
 
 ```java
@@ -31,16 +31,16 @@ import com.smore.RNSegmentIOAnalytics.RNSegmentIOAnalyticsPackage; // <-- add th
 
 ## Usage sample
 ```javascript
-var RNSegmentIOAnalytics = require('react-native-segment-io-analytics');
+import Analytics from 'react-native-analytics'
 
-var segmentIOWriteKey = "SEGMENT_IO_WRITE_KEY";
-var flushEverySecondsCount = 1;
-RNSegmentIOAnalytics.setup(segmentIOWriteKey, flushEverySecondsCount);
-RNSegmentIOAnalytics.identifyUser("testing", {"name":"test name"});
-RNSegmentIOAnalytics.track("test track", {"name":"test track with name"});
-RNSegmentIOAnalytics.screen("test screen", {"screenType":"SCREEN NAME"});
-RNSegmentIOAnalytics.flush();
-RNSegmentIOAnalytics.reset();
+const segmentIOWriteKey = "SEGMENT_IO_WRITE_KEY"
+const flushEverySecondsCount = 1
+Analytics.setup(segmentIOWriteKey, flushEverySecondsCount)
+Analytics.identify("testing", {"name":"test name"})
+Analytics.track("test track", {"name":"test track with name"})
+Analytics.screen("test screen", {"screenType":"SCREEN NAME"})
+Analytics.flush()
+Analytics.reset()
 ```
 
 ## Documentation
@@ -54,12 +54,6 @@ ld: '......./Pods/GoogleIDFASupport/Libraries/libAdIdAccessLibrary.a(TAGActualAd
 ```
 There are instructions for fixing it here: https://stackoverflow.com/questions/31395260/google-analytics-libadidaccess-a-does-not-contain-bitcode
 
-## Deployment
-Deploying the project can be done using ```npm publish``` command.
-Read more about it here: https://gist.github.com/coolaj86/1318304
-
 ## License
 
 This project is released under the [MIT License](http://www.opensource.org/licenses/MIT).
-
-The copyright notice from Segment's project is in the *analytics-ios.LICENSE* file
