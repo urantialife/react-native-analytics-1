@@ -33,24 +33,24 @@ export default {
      * https://segment.com/docs/libraries/ios/#identify
      * https://segment.com/docs/libraries/android/#identify
      */
-    identify: function (userId: string, traits: string) {
-        NativeRNSegmentIOAnalytics.identify(userId, traits)
+    identify: function (userId: string, traits: ?Object) {
+        NativeRNSegmentIOAnalytics.identify(userId, traits || {})
     },
 
     /*
      * https://segment.com/docs/libraries/ios/#track
      * https://segment.com/docs/libraries/android/#track
      */
-    track: function (event: string, properties: Object) {
-        NativeRNSegmentIOAnalytics.track(event, properties)
+    track: function (event: string, properties: ?Object) {
+        NativeRNSegmentIOAnalytics.track(event, properties || {})
     },
 
     /*
      * https://segment.com/docs/libraries/ios/#screen
      * https://segment.com/docs/libraries/android/#screen
      */
-    screen: function (screenName: string, properties: Object) {
-        NativeRNSegmentIOAnalytics.screen(screenName, properties)
+    screen: function (screenName: string, properties: ?Object) {
+        NativeRNSegmentIOAnalytics.screen(screenName, properties || {})
     },
 
     /*
