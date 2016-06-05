@@ -1,21 +1,23 @@
 /**
- * @providesModule RNSegmentIOAnalytics
  * @flow
  *
  * Created by Tal Kain <tal@kain.net>,
  * and Ricky Reusser <rsreusser@gmail.com>,
  * and Alex Rothberg
+ * and Tony Xiao
  * Copyright (c) 2016 Fire Place Inc. All rights reserved.
  */
-'use strict';
+'use strict'
 
-var NativeRNSegmentIOAnalytics = require('react-native').NativeModules.RNSegmentIOAnalytics;
+import {NativeModules} from 'react-native'
+
+const NativeRNSegmentIOAnalytics = NativeModules.RNSegmentIOAnalytics
 
 /**
  * RNSegmentIOAnalytics is a React Native wrapper for the Segment.com Analytics SDK.
  */
 
-var RNSegmentIOAnalytics = {
+export default {
     /*
      * Setting up the Segment IO Analytics service
      *
@@ -23,32 +25,32 @@ var RNSegmentIOAnalytics = {
      * @param flushAt https://segment.com/docs/libraries/ios/#flushing or https://segment.com/docs/libraries/android/#customizing-the-client
      * @param shouldUseLocationServices https://segment.com/docs/libraries/ios/#location-services
      */
-    setup: function (configKey, flushAt = 20, shouldUseLocationServices = false) {
-        NativeRNSegmentIOAnalytics.setup(configKey, flushAt, shouldUseLocationServices);
+    setup: function (configKey: string, flushAt: number = 20, shouldUseLocationServices: bool = false) {
+        NativeRNSegmentIOAnalytics.setup(configKey, flushAt, shouldUseLocationServices)
     },
 
     /*
      * https://segment.com/docs/libraries/ios/#identify
      * https://segment.com/docs/libraries/android/#identify
      */
-    identifyUser: function (userId, traits) {
-        NativeRNSegmentIOAnalytics.identifyUser(userId, traits);
+    identifyUser: function (userId: string, traits: string) {
+        NativeRNSegmentIOAnalytics.identifyUser(userId, traits)
     },
 
     /*
      * https://segment.com/docs/libraries/ios/#track
      * https://segment.com/docs/libraries/android/#track
      */
-    track: function (trackText, properties) {
-        NativeRNSegmentIOAnalytics.track(trackText, properties);
+    track: function (event: string, properties: Object) {
+        NativeRNSegmentIOAnalytics.track(event, properties)
     },
 
     /*
      * https://segment.com/docs/libraries/ios/#screen
      * https://segment.com/docs/libraries/android/#screen
      */
-    screen: function (screenName, properties) {
-        NativeRNSegmentIOAnalytics.screen(screenName, properties);
+    screen: function (screenName: string, properties: Object) {
+        NativeRNSegmentIOAnalytics.screen(screenName, properties)
     },
 
     /*
@@ -56,7 +58,7 @@ var RNSegmentIOAnalytics = {
      * https://segment.com/docs/libraries/android/#how-do-you-handle-unique-identifiers-
      */
     reset: function () {
-        NativeRNSegmentIOAnalytics.reset();
+        NativeRNSegmentIOAnalytics.reset()
     },
 
     /*
@@ -64,15 +66,15 @@ var RNSegmentIOAnalytics = {
      * https://segment.com/docs/libraries/android/#how-does-the-library-queue-api-calls-
      */
     flush: function () {
-        NativeRNSegmentIOAnalytics.flush();
+        NativeRNSegmentIOAnalytics.flush()
     },
 
     /*
      * https://segment.com/docs/libraries/ios/#logging
      * https://segment.com/docs/libraries/android/#debugging
      */
-    debug: function (isEnabled) {
-        NativeRNSegmentIOAnalytics.debug(isEnabled);
+    debug: function (isEnabled: bool) {
+        NativeRNSegmentIOAnalytics.debug(isEnabled)
     },
 
     /*
@@ -80,7 +82,7 @@ var RNSegmentIOAnalytics = {
      * https://segment.com/docs/libraries/android/#context
      */
     disable: function () {
-        NativeRNSegmentIOAnalytics.disable();
+        NativeRNSegmentIOAnalytics.disable()
     },
 
     /*
@@ -88,8 +90,6 @@ var RNSegmentIOAnalytics = {
      * https://segment.com/docs/libraries/android/#context
      */
     enable: function () {
-        NativeRNSegmentIOAnalytics.enable();
+        NativeRNSegmentIOAnalytics.enable()
     },
-};
-
-module.exports = RNSegmentIOAnalytics;
+}
