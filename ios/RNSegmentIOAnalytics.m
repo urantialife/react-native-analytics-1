@@ -5,10 +5,10 @@
 //  Copyright (c) 2015 Fire Place Inc. All rights reserved.
 //
 
-#import "RNSegmentIOAnalytics.h"
-#import "RCTConvert.h"
-#import "SEGAnalytics.h"
 #import <Foundation/Foundation.h>
+#import <RCTConvert.h>
+#import <SEGAnalytics.h>
+#import "RNSegmentIOAnalytics.h"
 
 @implementation RNSegmentIOAnalytics
 
@@ -78,7 +78,7 @@ RCT_EXPORT_METHOD(enable) {
     [[SEGAnalytics sharedAnalytics] enable];
 }
 
--(NSMutableDictionary*) convertToStringDictionary: (NSDictionary *)properties {
+- (NSMutableDictionary*) convertToStringDictionary: (NSDictionary *)properties {
     /*
      According to React Native's documentation:
      
