@@ -57,7 +57,7 @@ public class RNSegmentIOAnalyticsModule extends ReactContextBaseJavaModule {
    https://segment.com/docs/libraries/android/#identify
    */
   @ReactMethod
-  public void identifyUser(String userId, ReadableMap traits) {
+  public void identify(String userId, ReadableMap traits) {
     if (!mEnabled) {
       return;
     }

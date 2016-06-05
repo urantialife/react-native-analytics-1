@@ -25,7 +25,7 @@ RCT_EXPORT_METHOD(setup:(NSString*)configKey :(NSUInteger)flushAt :(BOOL)shouldU
 /*
  https://segment.com/docs/libraries/ios/#identify
  */
-RCT_EXPORT_METHOD(identifyUser:(NSString*)userId traits:(NSDictionary *)traits) {
+RCT_EXPORT_METHOD(identify:(NSString*)userId traits:(NSDictionary *)traits) {
     [[SEGAnalytics sharedAnalytics] identify:userId traits:[self convertToStringDictionary:traits]];
 }
 

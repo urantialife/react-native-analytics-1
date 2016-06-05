@@ -33,8 +33,8 @@ export default {
      * https://segment.com/docs/libraries/ios/#identify
      * https://segment.com/docs/libraries/android/#identify
      */
-    identifyUser: function (userId: string, traits: string) {
-        NativeRNSegmentIOAnalytics.identifyUser(userId, traits)
+    identify: function (userId: string, traits: string) {
+        NativeRNSegmentIOAnalytics.identify(userId, traits)
     },
 
     /*
