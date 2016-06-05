@@ -1,6 +1,6 @@
 {
   "name": "react-native-analytics",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The Ananlytics API you've always wanted. Now for React Native. Powered by Segment.",
   "repository": {
     "type": "git",
@@ -16,11 +16,17 @@
     "ios",
     "android"
   ],
-  "author": {
-    "name": "Tal Kain",
-    "email": "tal@kain.net",
-    "url": "https://wwww.smore.com"
-  },
+  "authors": [
+    {
+      "name": "Tal Kain",
+      "email": "tal@kain.net",
+      "url": "https://www.smore.com"
+    }, {
+      "name": "Tony Xiao",
+      "email": "tonyx.ca@gmail.com",
+      "url": "https://tonyxiao.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tonyxiao/react-native-analytics/issues"
@@ -29,8 +35,7 @@
     {
       "name": "talkain",
       "email": "tal@kain.net"
-    },
-    {
+    }, {
       "name": "tonyxiao",
       "email": "tonyx.ca@gmail.com"
     }
