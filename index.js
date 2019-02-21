@@ -13,6 +13,11 @@ import {NativeModules} from 'react-native'
 
 const NativeRNSegmentIOAnalytics = NativeModules.RNSegmentIOAnalytics
 
+export type Configuration = {
+    flushAt?: number,
+    shouldUseLocationServices?: bool,
+};
+
 /**
  * RNSegmentIOAnalytics is a React Native wrapper for the Segment.com Analytics SDK.
  */
@@ -22,11 +27,16 @@ export default {
      * Setting up the Segment IO Analytics service
      *
      * @param configKey https://segment.com/docs/libraries/ios/#configuration or https://segment.com/docs/libraries/android/#customizing-the-client
-     * @param flushAt https://segment.com/docs/libraries/ios/#flushing or https://segment.com/docs/libraries/android/#customizing-the-client
-     * @param shouldUseLocationServices https://segment.com/docs/libraries/ios/#location-services
+     * @param conf https://github.com/segmentio/analytics-react-native/blob/3ec0dcdb0ec89d672a5f8949fe6b044b84c53b03/packages/core/docs/classes/analytics.client.md#setup
      */
-    setup: function (configKey: string, flushAt: number = 20, shouldUseLocationServices: bool = false) {
-        NativeRNSegmentIOAnalytics.setup(configKey, flushAt, shouldUseLocationServices)
+    setup: function (configKey: string, conf?: Configuration = {}) {
+        // this converts the conf object with optionals into one with resolved defaults for null values
+        // it uses values that existed in this JS lib prior to my work on it
+        const confWithDefaults = {
+            flushAt: typeof conf.flushAt === 'number' ? conf.flushAt : 20,
+            shouldUseLocationServices: typeof conf.shouldUseLocationServices === 'boolean' ? conf.shouldUseLocationServices : false,
+        };
+        NativeRNSegmentIOAnalytics.setup(configKey, confWithDefaults)
     },
 
     /*

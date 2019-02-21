@@ -14,11 +14,22 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_METHOD(setup:(NSString*)configKey :(NSUInteger)flushAt :(BOOL)shouldUseLocationServices)
+RCT_EXPORT_METHOD(setup:(NSString*)configKey configuration:(NSDictionary *)conf)
 {
     SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:configKey];
-    configuration.flushAt = flushAt;
-    configuration.shouldUseLocationServices = shouldUseLocationServices;
+    if (conf != nil) {
+        id flushAt = conf[@"flushAt"];
+        if (flushAt != nil) {
+            NSUInteger integerFlushAt = [RCTConvert NSUInteger:flushAt];
+            if (integerFlushAt > 0) {
+                configuration.flushAt = integerFlushAt;
+            }
+        }
+        id shouldUseLocationServices = conf[@"shouldUseLocationServices"];
+        if (shouldUseLocationServices != nil) {
+            configuration.shouldUseLocationServices = [RCTConvert BOOL:shouldUseLocationServices];
+        }
+    }
     [SEGAnalytics setupWithConfiguration:configuration];
 }
 
