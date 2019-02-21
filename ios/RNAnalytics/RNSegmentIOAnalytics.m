@@ -29,6 +29,10 @@ RCT_EXPORT_METHOD(setup:(NSString*)configKey configuration:(NSDictionary *)conf)
         if (shouldUseLocationServices != nil) {
             configuration.shouldUseLocationServices = [RCTConvert BOOL:shouldUseLocationServices];
         }
+        id trackAppLifecycleEvents = conf[@"trackAppLifecycleEvents"];
+        if (trackAppLifecycleEvents != nil) {
+            configuration.trackApplicationLifecycleEvents = [RCTConvert BOOL:trackAppLifecycleEvents];
+        }
     }
     [SEGAnalytics setupWithConfiguration:configuration];
 }

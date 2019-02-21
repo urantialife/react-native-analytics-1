@@ -49,6 +49,9 @@ public class RNSegmentIOAnalyticsModule extends ReactContextBaseJavaModule {
             builder.flushQueueSize(flushAt);
           }
         }
+        if (conf.hasKey("trackAppLifecycleEvents") && conf.getBoolean("trackAppLifecycleEvents")) {
+          builder = builder.trackApplicationLifecycleEvents();
+        }
       }
 
       if (mDebug) {

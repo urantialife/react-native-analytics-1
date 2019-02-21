@@ -16,6 +16,7 @@ const NativeRNSegmentIOAnalytics = NativeModules.RNSegmentIOAnalytics
 export type Configuration = {
     flushAt?: number,
     shouldUseLocationServices?: bool,
+    trackAppLifecycleEvents?: bool,
 };
 
 /**
@@ -35,6 +36,7 @@ export default {
         const confWithDefaults = {
             flushAt: typeof conf.flushAt === 'number' ? conf.flushAt : 20,
             shouldUseLocationServices: typeof conf.shouldUseLocationServices === 'boolean' ? conf.shouldUseLocationServices : false,
+            trackAppLifecycleEvents: typeof conf.trackAppLifecycleEvents === 'boolean' ? conf.trackAppLifecycleEvents : true,
         };
         NativeRNSegmentIOAnalytics.setup(configKey, confWithDefaults)
     },
